@@ -9,24 +9,22 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # 1. Checkout main
+      - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      # 2. Setup Python & install deps
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
+      - run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run scraper
-        run: python scraper.py --output docs/feeds/dgr.xml
+      # 3. Run scraper → docs/feeds/dgr.xml
+      - run: python scraper.py
 
-      - name: Commit & Push feed
-        run: |
+      # 4. Commit & push back to main
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/feeds/dgr.xml

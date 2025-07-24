@@ -8,7 +8,8 @@ import os
 # --- Config ---
 BASE_URL = "https://dgrindia.gov.in"
 PAGE_URL = f"{BASE_URL}/Content1/job-assistance"
-OUTPUT_PATH = os.path.join("feeds", "dgr.xml")
+OUTPUT_PATH = os.path.join("docs", "feeds", "dgr.xml")
+
 TZ = pytz.timezone("Asia/Kolkata")
 
 # --- Fetch & parse ---
